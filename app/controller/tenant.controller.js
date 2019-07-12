@@ -66,7 +66,7 @@ exports.lookUpByAge = (req, res) => {
 	console.log("checkIsActive");
 	return Customer.findAll({
 				where: {
-					IsActive: req.params.IsActive
+					id: req.params.TenantId
 				},
 				attributes: { exclude: ["createdAt", "updatedAt"] }
 			})

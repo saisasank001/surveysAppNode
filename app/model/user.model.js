@@ -1,15 +1,37 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const User = sequelize.define('customer', {
-        name: {
+    const User = sequelize.define('users', {
+        Name: {
             type: Sequelize.STRING
         },
-        age: {
+        Username: {
+            type: Sequelize.STRING
+        },
+        Password: {
+            type: Sequelize.STRING
+        },
+        TenantId: {
             type: Sequelize.INTEGER
         },
-        active: {
-            type: Sequelize.BOOLEAN,
-            defaultValue: false
+        RoleId: {
+            type: Sequelize.INTEGER
+        },
+        CreatedBy: {
+            type: Sequelize.INTEGER
+        },
+        UpdatedBy: {
+            type: Sequelize.INTEGER
+        },
+        Locations: {
+            type: Sequelize.STRING
+        },
+        'createdAt': {
+            type: Sequelize.DATE(3),
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+        },
+        'updatedAt': {
+            type: Sequelize.DATE(3),
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
         }
     });
 

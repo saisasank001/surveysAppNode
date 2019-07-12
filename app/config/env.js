@@ -1,7 +1,7 @@
 const env = {
-  database: 'gkzdb',
+  database: 'surveyapp',
   username: 'root',
-  password: '12345',
+  password: 'admin',
   host: 'localhost',
   dialect: 'mysql',
   pool: {

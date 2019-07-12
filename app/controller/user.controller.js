@@ -1,5 +1,5 @@
 const db = require('../config/db.config.js');
-const Customer = db.customers;
+const Customer = db.users;
 
 // Post a Customer
 exports.create = (req, res) => {	

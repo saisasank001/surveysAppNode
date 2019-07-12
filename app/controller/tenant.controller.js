@@ -62,7 +62,44 @@ exports.lookUpByAge = (req, res) => {
 			.catch(error => res.status(400).send(error));
 }
  //find a tenent by isActive
- exports.isActive = (req,res) =>{}
+ exports.checkIsActive = (req,res) =>{
+	console.log("checkIsActive");
+	return Customer.findAll({
+				where: {
+					IsActive: req.params.IsActive
+				},
+				attributes: { exclude: ["createdAt", "updatedAt"] }
+			})
+			.then( customers => {
+					if(!customers){
+						return res.status(404).json({message: "Customers Not Found"})
+					}
+					return res.status(200).json(customers)
+				}
+			)
+			.catch(error => res.status(400).send(error));
+ }
+//  //find a tenent by change active
+ exports.changeActive = (req,res) =>{
+	console.log("changeActive");
+	return Customer.findById(req.params.TenantId)
+		.then(
+			customer => {
+				if(!customer){
+					return res.status(404).json({
+						message: 'Customer Not Found',
+					});
+				}
+				return customer
+							.update({
+								IsActive: req.body.IsActive
+							})
+							.then(() => res.status(200).json(customer))
+							.catch((error) => res.status(400).send(error));
+				}
+			)
+		.catch((error) => res.status(400).send(error));
+ }
 // Update a Customer
 exports.update = (req, res) => {
 	return Customer.findById(req.params.customerId)

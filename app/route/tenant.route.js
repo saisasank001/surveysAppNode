@@ -13,13 +13,15 @@ module.exports = function(app) {
 
     app.get('/api/tenant/age/:age', tenant.lookUpByAge);
 
-    app.get('/api/tenant/checkIsActive:TenantId', tenant.isActive);
+    app.get('/api/tenant/checkIsActive:TenantId', tenant.checkIsActive);
+
+    app.post('/api/tenant/changeActive:TenantId', tenant.changeActive);    
      
     // Update a Tenant with Id
     app.put('/api/tenant/:TenantId', tenant.update);
  
     // Delete a Tenant with Id
-    app.delete('/api/tenant/:TenantId', tenant.delete);
+    app.delete('/api/tenant/:TenantId', tenant.delete); 
 
     // Delete all tenant
     app.delete('/api/tenant/all/delete', tenant.deleteAll);

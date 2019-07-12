@@ -6,10 +6,10 @@ module.exports = function(app) {
     app.post('/api/role/create', role.create);
  
     // Retrieve all Role
-    app.get('/api/role', role.findAll);
+    app.get('/api/roles/getAllRoles', role.findAll);
  
     // Retrieve a single Role by Id
-    app.get('/api/role/:RoleId', role.findById);
+    app.get('/api/roles/getRoleById:roleId', role.findById);
 
     app.get('/api/role/age/:age', role.lookUpByAge);
  

@@ -6,10 +6,10 @@ module.exports = function(app) {
     app.post('/api/location/create', location.create);
  
     // Retrieve all Location
-    app.get('/api/location', location.findAll);
+    app.get('/api/location/getAllLocations', location.findAll);
  
     // Retrieve a single Location by Id
-    app.get('/api/location/:LocationId', location.findById);
+    app.get('/api/location/getLocationById:LocationId', location.findById);
 
     app.get('/api/location/age/:age', location.lookUpByAge);
  

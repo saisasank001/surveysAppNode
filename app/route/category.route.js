@@ -6,10 +6,13 @@ module.exports = function(app) {
     app.post('/api/category/create', category.create);
 
     // Retrieve all Category
-    app.get('/api/category', category.findAll);
+    app.get('/api/category/getAllCategories', category.findAll);
 
     // Retrieve a single Category by Id
     app.get('/api/category/:CategoryId', category.findById);
+
+    app.get('/api/category/getCategoriesByUser', category.getCategoriesByUser);
+    
 
     app.get('/api/category/age/:age', category.lookUpByAge);
 

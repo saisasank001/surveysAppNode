@@ -43,7 +43,41 @@ exports.findById = (req, res) => {
 			)
 			.catch(error => res.status(400).send(error));
 };
-
+//Get Categories in Mobile
+exports.getCategoriesByUser = (req, res) => {	
+		return Customer.findAll({
+			where: {
+				TenantId: req.body.TenantId,
+				},
+			attributes: { exclude: ["createdAt", "updatedAt"] }
+		})
+		.then( customers => {
+				if(!customers){
+					return res.status(404).json({message: "Customers Not Found"})
+				}
+				return res.status(200).json(customers)
+			}
+		)
+		.catch(error => res.status(400).send(error));
+	};
+//get Categories By User
+exports.getCategoriesByUser = (req, res) => {	
+	return Customer.findAll({
+		where: {
+			TenantId: req.body.TenantId,
+			UserId: req.body.UserId
+		},
+		attributes: { exclude: ["createdAt", "updatedAt"] }
+	})
+	.then( customers => {
+			if(!customers){
+				return res.status(404).json({message: "Customers Not Found"})
+			}
+			return res.status(200).json(customers)
+		}
+	)
+	.catch(error => res.status(400).send(error));
+};
 exports.lookUpByAge = (req, res) => {
 	console.log("LookUByAge");
 	return Customer.findAll({

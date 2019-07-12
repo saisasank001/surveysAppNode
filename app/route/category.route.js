@@ -11,8 +11,9 @@ module.exports = function(app) {
     // Retrieve a single Category by Id
     app.get('/api/category/:CategoryId', category.findById);
 
-    app.get('/api/category/getCategoriesByUser', category.getCategoriesByUser);
+    app.post('/api/category/getCategoriesByUser', category.getCategoriesByUser);
     
+    app.post('/api/category/getCategoriesInMobile', category.getCategoriesInMobile);
 
     app.get('/api/category/age/:age', category.lookUpByAge);
 

@@ -4,11 +4,15 @@ const Customer = db.tenant;
 // Post a Customer
 exports.create = (req, res) => {	
 	// Save to MariaDB database
-	Customer.create({  
-			name: req.body.name,
-			age: req.body.age,
-			active: req.body.active
-		})
+	Customer.create(
+		{Name:req.body.Name,
+			Address:req.body.Address,
+			Logo:req.body.Logo,
+			ContactNo:req.body.ContactNo,
+			IsActive:req.body.IsActive,
+			CreatedBy:req.body.CreatedBy,
+			UpdatedBy:req.body.UpdatedBy,
+			ValidTill:req.body.ValidTill})
 		.then(customer => {		
 			// Send created customer to client
 			res.json(customer);

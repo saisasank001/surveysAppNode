@@ -5,9 +5,15 @@ const Customer = db.surveys;
 exports.create = (req, res) => {	
 	// Save to MariaDB database
 	Customer.create({  
-			name: req.body.name,
-			age: req.body.age,
-			active: req.body.active
+        UserID: req.body.UserID,
+        Title: req.body.Title,
+        CategoryId:req.body.CategoryId,
+        DynamicForm:req.body.DynamicForm,
+        ExpiresOn:req.body.ExpiresOn,
+        StartsOn:req.body.StartsOn,
+        CreatedBy:req.body.CreatedBy,
+        UpdatedBy:req.body.UpdatedBy, 
+        IsActive: req.body.IsActive
 		})
 		.then(customer => {		
 			// Send created customer to client

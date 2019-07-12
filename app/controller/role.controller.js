@@ -5,9 +5,10 @@ const Customer = db.roles;
 exports.create = (req, res) => {	
 	// Save to MariaDB database
 	Customer.create({  
-			name: req.body.name,
-			age: req.body.age,
-			active: req.body.active
+        RoleName: req.body.RoleName,
+        AccessIds: req.body.AccessIds,
+        CreatedBy:req.body.CreatedBy,
+        UpdatedBy:req.body.UpdatedBy
 		})
 		.then(customer => {		
 			// Send created customer to client

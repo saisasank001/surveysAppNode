@@ -1,9 +1,10 @@
 const db = require('../config/db.config.js');
 const Customer = db.tenant;
 
-exports.addTenant= (req,res)=>{
+exports.create= (req,res)=>{
 
-       Customer.create({Name:req.body.Name,
+       Customer.create({
+		   Name:req.body.Name,
            Address:req.body.Address,
            Logo:req.body.Logo,
            ContactNo:req.body.ContactNo,
@@ -60,7 +61,8 @@ exports.lookUpByAge = (req, res) => {
 			)
 			.catch(error => res.status(400).send(error));
 }
- 
+ //find a tenent by isActive
+ exports.isActive = (req,res) =>{}
 // Update a Customer
 exports.update = (req, res) => {
 	return Customer.findById(req.params.customerId)

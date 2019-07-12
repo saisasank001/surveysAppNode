@@ -21,6 +21,11 @@ db.sequelize = sequelize;
 
 //Models/tables
 db.customers = require('../model/customer.model.js')(sequelize, Sequelize);
-
+db.category = require('../model/category.model.js')(sequelize, Sequelize);
+db.location = require('../model/location.model.js')(sequelize, Sequelize);
+db.role = require('../model/role.model.js')(sequelize, Sequelize);
+db.survey = require('../model/survey.model.js')(sequelize, Sequelize);
+db.tenant = require('../model/tenant.model.js')(sequelize, Sequelize);
+db.user = require('../model/user.model.js')(sequelize, Sequelize);
 
 module.exports = db;

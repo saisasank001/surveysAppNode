@@ -15,11 +15,15 @@ module.exports = (sequelize, Sequelize) => {
         },
         UpdatedBy: {
             type: Sequelize.INTEGER
+        },
+        'createdAt': {
+            type: Sequelize.DATE(3),
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+        },
+        'updatedAt': {
+            type: Sequelize.DATE(3),
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
         }
-        // active: {
-        //     type: Sequelize.BOOLEAN,
-        //     defaultValue: false
-        // }
     });
 
     return Category;

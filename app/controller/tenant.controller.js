@@ -1,24 +1,21 @@
 const db = require('../config/db.config.js');
 const Customer = db.tenant;
 
-// Post a Customer
-exports.create = (req, res) => {	
-	// Save to MariaDB database
-	Customer.create(
-		{Name:req.body.Name,
-			Address:req.body.Address,
-			Logo:req.body.Logo,
-			ContactNo:req.body.ContactNo,
-			IsActive:req.body.IsActive,
-			CreatedBy:req.body.CreatedBy,
-			UpdatedBy:req.body.UpdatedBy,
-			ValidTill:req.body.ValidTill})
-		.then(customer => {		
-			// Send created customer to client
-			res.json(customer);
-		})
-		.catch(error => res.status(400).send(error))
-};
+exports.addTenant= (req,res)=>{
+
+       Customer.create({Name:req.body.Name,
+           Address:req.body.Address,
+           Logo:req.body.Logo,
+           ContactNo:req.body.ContactNo,
+           IsActive:req.body.IsActive,
+           CreatedBy:req.body.CreatedBy,
+           UpdatedBy:req.body.UpdatedBy,
+           ValidTill:req.body.ValidTill}).then(dbresponse=>{
+               res.json(dbresponse);
+       }).catch(err=>{
+           res.status(400).send(err);
+       })
+}
  
 // Fetch all Customers
 exports.findAll = (req, res) => {

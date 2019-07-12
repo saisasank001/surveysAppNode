@@ -2,8 +2,8 @@ module.exports = function(app) {
  
     const tenant = require('../controller/tenant.controller.js');
  
-    // Create a new Tenant
-    app.post('/api/tenant/create', tenant.create);
+
+    app.post('/api/tenant/AddTenant',tenant.addTenant);
  
     // Retrieve all Tenant
     app.get('/api/tenant', tenant.findAll);

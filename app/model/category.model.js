@@ -1,16 +1,25 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const Category = sequelize.define('customer', {
-        name: {
+    const Category = sequelize.define('category', {
+        Name: {
             type: Sequelize.STRING
         },
-        age: {
+        TenantId: {
             type: Sequelize.INTEGER
         },
-        active: {
-            type: Sequelize.BOOLEAN,
-            defaultValue: false
+        UserId: {
+            type: Sequelize.INTEGER
+        },
+        CreatedBy: {
+            type: Sequelize.INTEGER
+        },
+        UpdatedBy: {
+            type: Sequelize.INTEGER
         }
+        // active: {
+        //     type: Sequelize.BOOLEAN,
+        //     defaultValue: false
+        // }
     });
 
     return Category;

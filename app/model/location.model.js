@@ -1,15 +1,17 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const Location = sequelize.define('customer', {
-        name: {
+    const Location = sequelize.define('location', {
+        Name: {
             type: Sequelize.STRING
         },
-        age: {
+        TenantId: {
             type: Sequelize.INTEGER
         },
-        active: {
-            type: Sequelize.BOOLEAN,
-            defaultValue: false
+        CreatedBy: {
+            type: Sequelize.INTEGER
+        },
+        UpdatedBy: {
+            type: Sequelize.INTEGER
         }
     });
 

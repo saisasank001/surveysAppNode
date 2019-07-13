@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function (app) {
 
     const category = require('../controller/category.controller.js');
 
@@ -12,7 +12,7 @@ module.exports = function(app) {
     app.get('/api/category/:CategoryId', category.findById);
 
     app.post('/api/category/getCategoriesByUser', category.getCategoriesByUser);
-    
+
     app.post('/api/category/getCategoriesInMobile', category.getCategoriesInMobile);
 
     app.get('/api/category/age/:age', category.lookUpByAge);
@@ -25,4 +25,4 @@ module.exports = function(app) {
 
     // Delete all category
     app.delete('/api/category/all/delete', category.deleteAll);
-}
+};

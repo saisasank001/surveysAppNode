@@ -26,4 +26,4 @@ module.exports = (sequelize, Sequelize) => {
         }
     });
     return Category;
-}
+};

@@ -7,10 +7,10 @@ module.exports = (sequelize, Sequelize) => {
         AccessIds: {
             type: Sequelize.INTEGER
         },
-        CreatedBy:{
+        CreatedBy: {
             type: Sequelize.INTEGER
         },
-        UpdatedBy:{
+        UpdatedBy: {
             type: Sequelize.INTEGER
         },
         'createdAt': {
@@ -25,4 +25,4 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     return Role;
-}
+};

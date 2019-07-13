@@ -9,7 +9,7 @@ module.exports = function (app) {
     app.get('/api/location/getAllLocations', location.findAll);
 
     // Retrieve a single Location by Id
-    app.get('/api/location/getLocationById:LocationId', location.findById);
+    app.get('/api/location/getLocationById/:LocationId', location.findById);
 
     app.get('/api/location/age/:age', location.lookUpByAge);
 
@@ -17,7 +17,7 @@ module.exports = function (app) {
     app.put('/api/location/:LocationId', location.update);
 
     // Delete a Location with Id
-    app.delete('/api/location/:LocationId', location.delete);
+    app.get('/api/location/delete/:LocationId', location.delete);
 
     // Delete all location
     app.delete('/api/location/all/delete', location.deleteAll);

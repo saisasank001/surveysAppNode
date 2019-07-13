@@ -32,7 +32,7 @@ exports.findAll = (req, res) => {
 
 // Find a Customer by Id
 exports.findById = (req, res) => {
-    Customer.findById(req.params.customerId,
+    Customer.findById(req.params.LocationId,
         {attributes: {exclude: ["createdAt", "updatedAt"]}}
     )
         .then(customer => {
@@ -91,7 +91,7 @@ exports.update = (req, res) => {
 // Delete a Customer by Id
 exports.delete = (req, res) => {
     return Customer
-        .findById(req.params.customerId)
+        .findById(req.params.LocationId)
         .then(customer => {
             if (!customer) {
                 return res.status(400).json({

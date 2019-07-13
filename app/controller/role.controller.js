@@ -1,5 +1,5 @@
 const db = require('../config/db.config.js');
-const Customer = db.roles;
+const Customer = db.role;
 const common = require('./common.controller');
 
 // Post a Customer

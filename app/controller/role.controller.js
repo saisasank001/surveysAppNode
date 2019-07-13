@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     })
         .then(customer => {
             // Send response object as condition , success, error
-            res.json(formResponseObject(true, "successfully created role", ""));
+            res.json(common.formResponseObject(true, "successfully created role", ""));
         })
         .catch(error => res.status(400).send(error))
 };

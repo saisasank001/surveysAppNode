@@ -129,7 +129,7 @@ exports.update = (req, res) => {
 // Delete a Customer by Id
 exports.delete = (req, res) => {
     return Customer
-        .findById(req.params.customerId)
+        .findById(req.params.CategoryId)
         .then(customer => {
             if (!customer) {
                 return res.status(400).json({

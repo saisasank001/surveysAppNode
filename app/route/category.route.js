@@ -21,7 +21,7 @@ module.exports = function (app) {
     app.put('/api/category/:CategoryId', category.update);
 
     // Delete a Category with Id
-    app.delete('/api/category/:CategoryId', category.delete);
+    app.get('/api/category/delete/:CategoryId', category.delete);
 
     // Delete all category
     app.delete('/api/category/all/delete', category.deleteAll);

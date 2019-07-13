@@ -7,24 +7,24 @@ module.exports = (sequelize, Sequelize) => {
         Title: {
             type: Sequelize.STRING
         },
-        CategoryId:{
+        CategoryId: {
             type: Sequelize.INTEGER
         },
-        DynamicForm:{
+        DynamicForm: {
             type: Sequelize.TEXT
         },
-        ExpiresOn:{
+        ExpiresOn: {
             type: Sequelize.DATE
         },
-        StartsOn:{
+        StartsOn: {
             type: Sequelize.DATE
         },
-        CreatedBy:{
+        CreatedBy: {
             type: Sequelize.INTEGER
         },
-        UpdatedBy:{
+        UpdatedBy: {
             type: Sequelize.INTEGER
-        }, 
+        },
         IsActive: {
             type: Sequelize.BOOLEAN
         },
@@ -39,4 +39,4 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     return Survey;
-}
+};

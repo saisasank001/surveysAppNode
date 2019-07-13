@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         ContactNo: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
         IsActive: {
             type: Sequelize.BOOLEAN
@@ -25,15 +25,18 @@ module.exports = (sequelize, Sequelize) => {
         ValidTill: {
             type: Sequelize.DATE
         },
+        Theme: {
+            type: Sequelize.STRING
+        },
         'createdAt': {
             type: Sequelize.DATE(3),
-            defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+            defaultValue: sequelize.NOW,
         },
         'updatedAt': {
             type: Sequelize.DATE(3),
-            defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+            defaultValue: sequelize.NOW,
         }
     });
 
     return Tenant;
-}
+};

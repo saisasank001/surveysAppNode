@@ -9,15 +9,15 @@ module.exports = function (app) {
     app.get('/api/roles/getAllRoles', role.findAll);
 
     // Retrieve a single Role by Id
-    app.get('/api/roles/getRoleById:roleId', role.findById);
+    app.get('/api/roles/getRoleById/:roleId', role.findById);
 
     app.get('/api/role/age/:age', role.lookUpByAge);
 
     // Update a Role with Id
-    app.put('/api/role/:RoleId', role.update);
+    app.post('/api/role/update/:RoleId', role.update);
 
     // Delete a Role with Id
-    app.delete('/api/role/:RoleId', role.delete);
+    app.get('/api/role/delete/:RoleId', role.delete);
 
     // Delete all role
     app.delete('/api/role/all/delete', role.deleteAll);

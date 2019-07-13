@@ -31,8 +31,9 @@ exports.findAll = (req, res) => {
 
 // Find a Customer by Id
 exports.findById = (req, res) => {
-    Customer.findById(req.params.customerId,
-        {attributes: {exclude: ["createdAt", "updatedAt"]}}
+    Customer.findById(req.params.roleId,
+        {
+            attributes: {exclude: ["createdAt", "updatedAt"]}}
     )
         .then(customer => {
                 if (!customer) {
@@ -90,7 +91,7 @@ exports.update = (req, res) => {
 // Delete a Customer by Id
 exports.delete = (req, res) => {
     return Customer
-        .findById(req.params.customerId)
+        .findById(req.params.RoleId)
         .then(customer => {
             if (!customer) {
                 return res.status(400).json({

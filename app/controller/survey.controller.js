@@ -71,25 +71,32 @@ exports.lookUpByAge = (req, res) => {
 
 // Update a Customer
 exports.update = (req, res) => {
-    return Customer.findById(req.params.customerId)
+    console.log(req.params.TenantId);
+    return Customer.findById(req.params.TenantId)
         .then(
             customer => {
                 if (!customer) {
-                    return res.status(404).json({
-                        message: 'Customer Not Found',
-                    });
+                    return res.status(400).json(common.formResponseObject(false, '', 'survey Not Found'));
                 }
                 return customer
                     .update({
-                        name: req.body.name,
-                        age: req.body.age,
-                        active: req.body.active
+                        UserID: req.body.UserID,
+                        Title: req.body.Title,
+                        CategoryId: req.body.CategoryId,
+                        DynamicForm: req.body.DynamicForm,
+                        ExpiresOn: req.body.ExpiresOn,
+                        StartsOn: req.body.StartsOn,
+                        CreatedBy: req.body.CreatedBy,
+                        UpdatedBy: req.body.UpdatedBy,
+                        IsActive: req.body.IsActive
                     })
                     .then(() => res.status(200).json(customer))
-                    .catch((error) => res.status(400).send(error));
+                    .catch((error) =>
+                        res.status(400).json(common.formResponseObject(false, '', 'Couldnt update survey'))
+                    );
             }
         )
-        .catch((error) => res.status(400).send(error));
+        .catch((error) => res.status(400).json(common.formResponseObject(false, '', 'survey Not Found')));
 };
 
 // Delete a Customer by Id

@@ -26,5 +26,6 @@ db.role = require('../model/role.model.js')(sequelize, Sequelize);
 db.survey = require('../model/survey.model.js')(sequelize, Sequelize);
 db.tenant = require('../model/tenant.model.js')(sequelize, Sequelize);
 db.user = require('../model/user.model.js')(sequelize, Sequelize);
+db.finalResponse = require('../model/finalresponse.model.js')(sequelize, Sequelize);
 
 module.exports = db;

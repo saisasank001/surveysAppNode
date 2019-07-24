@@ -4,7 +4,7 @@ const env = {
     password: 'Feedback123!@#',
     host: '13.234.144.50',
     dialect: 'mysql',
-    port: '19178',
+    port: '3306',
     pool: {
         max: 5,
         min: 0,

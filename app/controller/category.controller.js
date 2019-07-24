@@ -49,7 +49,7 @@ exports.findById = (req, res) => {
 exports.getCategoriesInMobile = (req, res) => {
     return Customer.findAll({
         where: {
-            TenantId: req.body.TenantId,
+            TenantId: req.params.TenantId,
         },
         attributes: {exclude: ["createdAt", "updatedAt"]}
     })

@@ -13,7 +13,7 @@ module.exports = function (app) {
 
     app.post('/api/category/getCategoriesByUser', category.getCategoriesByUser);
 
-    app.post('/api/category/getCategoriesInMobile', category.getCategoriesInMobile);
+    app.get('/api/category/getCategoriesInMobile/:TenantId', category.getCategoriesInMobile);
 
     app.get('/api/category/age/:age', category.lookUpByAge);
 

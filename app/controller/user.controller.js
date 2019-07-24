@@ -1,6 +1,7 @@
 const db = require('../config/db.config.js');
-const Customer = db.users;
+const Customer = db.user;
 const common = require('./common.controller');
+
 
 // Post a Customer
 exports.create = (req, res) => {
@@ -98,7 +99,7 @@ exports.update = (req, res) => {
 // Delete a Customer by Id
 exports.delete = (req, res) => {
     return Customer
-        .findById(req.params.customerId)
+        .findById(req.params.UserId)
         .then(customer => {
             if (!customer) {
                 return res.status(400).json({
@@ -121,3 +122,22 @@ exports.deleteAll = (req, res) => {
         .then(() => res.status(200).json({message: "All customers have been deleted!"}))
         .catch(error => res.status(400).send(error));
 };
+
+exports.login=(req,res)=>{
+    return Customer.findAll({
+        where: {
+            Username:req.body.email,
+            Password:req.body.password
+        },
+        attributes: {exclude: ["createdAt", "updatedAt"]}
+    })
+        .then(customers => {
+            console.log(customers)
+                if (!customers) {
+                    return res.status(404).json({message: "user Not Found"})
+                }
+                return res.status(200).json(common.formResponseObject(true,customers[0],''))
+            }
+        )
+        .catch(error => res.status(400).send(error));
+}

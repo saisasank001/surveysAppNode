@@ -20,7 +20,7 @@ module.exports = function (app) {
     app.post('/api/tenant/updateTenant/:TenantId', tenant.update);
 
     // Delete a Tenant with Id
-    app.delete('/api/tenant/:TenantId', tenant.delete);
+    app.get('/api/tenant/delete/:TenantId', tenant.delete);
 
     // Delete all tenant
     app.delete('/api/tenant/all/delete', tenant.deleteAll);

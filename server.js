@@ -1,13 +1,26 @@
+var path = require('path');
 var express = require('express');
 var app = express();
+var http = require('http').createServer(app);
 var bodyParser = require('body-parser');
 var swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('./swagger.json');
-app.use(bodyParser.json())
+var io = require('socket.io')(http);
+app.use(bodyParser.json({ limit: '50mb' }))
+
+app.set('socketio', io);
+
+app.use(function(req, res, next) {
+    req.io = io;
+    next();
+});
+
+app.io = io;
+
 
 const cors = require('cors')
 const corsOptions = {
-    origin: 'http://localhost:4200',
+    origin: '*',
     optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
@@ -15,7 +28,7 @@ app.use(cors(corsOptions));
 const db = require('./app/config/db.config.js');
 
 // force: true will drop the table if it already exists
-db.sequelize.sync({force: false}).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
     console.log('Drop and Resync with { force: false }');
 });
 
@@ -25,12 +38,18 @@ require('./app/route/role.route.js')(app);
 require('./app/route/survey.route.js')(app);
 require('./app/route/tenant.route.js')(app);
 require('./app/route/user.route.js')(app);
+require('./app/route/finalresponse.route.js')(app);
 
 //api documentation url
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get('/test', function(req, res) {
+    res.send('server is up and running');
+});
+
+app.use(express.static('public'))
 
 // Create a Server
-var server = app.listen(8080, function () {
+var server = http.listen(5000, function() {
 
     var host = server.address().address
     var port = server.address().port

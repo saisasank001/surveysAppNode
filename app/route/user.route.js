@@ -5,6 +5,9 @@ module.exports = function (app) {
     // Create a new User
     app.post('/api/user/create', user.create);
 
+    //user login route
+    app.post('/api/user/login', user.login);
+
     // Retrieve all User
     app.get('/api/users', user.findAll);
 
@@ -17,7 +20,7 @@ module.exports = function (app) {
     app.put('/api/user/:UserId', user.update);
 
     // Delete a User with Id
-    app.delete('/api/user/:UserId', user.delete);
+    app.get('/api/user/delete/:UserId', user.delete);
 
     // Delete all User
     app.delete('/api/user/all/delete', user.deleteAll);

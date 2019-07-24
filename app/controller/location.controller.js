@@ -6,11 +6,11 @@ const common = require('./common.controller');
 exports.create = (req, res) => {
     // Save to MariaDB database
     Customer.create({
-        Name: req.body.Name,
-        TenantId: req.body.TenantId,
-        CreatedBy: req.body.CreatedBy,
-        UpdatedBy: req.body.UpdatedBy
-    })
+            Name: req.body.Name,
+            TenantId: req.body.TenantId,
+            CreatedBy: req.body.CreatedBy,
+            UpdatedBy: req.body.UpdatedBy
+        })
         .then(customer => {
             // Send created customer to client
             // Send response object as condition , success, error
@@ -22,8 +22,8 @@ exports.create = (req, res) => {
 // Fetch all Customers
 exports.findAll = (req, res) => {
     Customer.findAll({
-        attributes: {exclude: ["createdAt", "updatedAt"]}
-    })
+
+        })
         .then(customers => {
             res.json(customers);
         })
@@ -32,34 +32,30 @@ exports.findAll = (req, res) => {
 
 // Find a Customer by Id
 exports.findById = (req, res) => {
-    Customer.findById(req.params.LocationId,
-        {attributes: {exclude: ["createdAt", "updatedAt"]}}
-    )
+    Customer.findById(req.params.LocationId, { attributes: { exclude: ["createdAt", "updatedAt"] } })
         .then(customer => {
-                if (!customer) {
-                    return res.status(404).json({message: "Customer Not Found"})
-                }
-                return res.status(200).json(customer)
+            if (!customer) {
+                return res.status(404).json({ message: "Customer Not Found" })
             }
-        )
+            return res.status(200).json(customer)
+        })
         .catch(error => res.status(400).send(error));
 };
 
 exports.lookUpByAge = (req, res) => {
     console.log("LookUByAge");
     return Customer.findAll({
-        where: {
-            age: req.params.age
-        },
-        attributes: {exclude: ["createdAt", "updatedAt"]}
-    })
+            where: {
+                age: req.params.age
+            },
+            attributes: { exclude: ["createdAt", "updatedAt"] }
+        })
         .then(customers => {
-                if (!customers) {
-                    return res.status(404).json({message: "Customers Not Found"})
-                }
-                return res.status(200).json(customers)
+            if (!customers) {
+                return res.status(404).json({ message: "Customers Not Found" })
             }
-        )
+            return res.status(200).json(customers)
+        })
         .catch(error => res.status(400).send(error));
 };
 
@@ -100,7 +96,7 @@ exports.delete = (req, res) => {
             }
 
             return customer.destroy()
-                .then(() => res.status(200).json({message: "Destroy successfully!"}))
+                .then(() => res.status(200).json({ message: "Destroy successfully!" }))
                 .catch(error => res.status(400).send(error));
         })
         .catch(error => res.status(400).send(error));
@@ -108,9 +104,9 @@ exports.delete = (req, res) => {
 
 exports.deleteAll = (req, res) => {
     return Customer.destroy({
-        where: {},
-        truncate: true
-    })
-        .then(() => res.status(200).json({message: "All customers have been deleted!"}))
+            where: {},
+            truncate: true
+        })
+        .then(() => res.status(200).json({ message: "All customers have been deleted!" }))
         .catch(error => res.status(400).send(error));
 };
